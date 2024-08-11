@@ -27,7 +27,7 @@ def withHTTP(String jsonParameters) {
     def response = httpRequest(
         acceptType: 'APPLICATION_JSON',
         httpMode: 'DELETE',
-        url: 'https://api.github.com/repos/${apiParams.name}',
+        url: 'https://api.github.com/repos/sdB0rsiwala/${apiParams.name}',
         customHeaders: [
             [name: 'Authorization', value: "Bearer ${apiParams.token}"],
             [name: 'X-GitHub-Api-Version', value: '2022-11-28']
