@@ -1,3 +1,3 @@
 def call() {
-    sh 'which echo'
+    sh 'which curl'
 }
