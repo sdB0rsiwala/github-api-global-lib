@@ -12,9 +12,9 @@ def withCurl(String jsonParameters) {
     }"""
 
     // Escape single quotes in payload for the shell
-    def escapedPayload = payload.replaceAll("'", "\\\\'")
+    def escapedPayload = payload.replaceAll("'", "\\'")
 
-    sh '''
+    sh """
         curl -L \\
              -X POST \\
              -H "Accept: application/vnd.github+json" \\
@@ -23,5 +23,5 @@ def withCurl(String jsonParameters) {
              https://api.github.com/user/repos \\
              -d '${escapedPayload}'
 
-    '''
+    """
 }
