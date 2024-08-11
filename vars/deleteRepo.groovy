@@ -23,11 +23,13 @@ def withCurl(String jsonParameters) {
 def withHTTP(String jsonParameters) {
     def apiParams = new groovy.json.JsonSlurperClassic().parseText(jsonParameters)
 
+    def repoURL = "https://api.github.com/repos/sdB0rsiwala/${apiParams.name}"
+
     // Make the HTTP DELETE request using httpRequest
     def response = httpRequest(
         acceptType: 'APPLICATION_JSON',
         httpMode: 'DELETE',
-        url: 'https://api.github.com/repos/sdB0rsiwala/$apiParams.name',
+        url: repoURL,
         customHeaders: [
             [name: 'Authorization', value: "Bearer ${apiParams.token}"],
             [name: 'X-GitHub-Api-Version', value: '2022-11-28']
