@@ -21,10 +21,7 @@ def withCurl(String jsonParameters) {
 
 
 def withHTTP(String jsonParameters) {
-     def apiParams = new groovy.json.JsonSlurperClassic().parseText(jsonParameters)
-
-    // Escape single quotes in payload for the shell
-    // def escapedPayload = payload.replaceAll("'", "\\'")
+    def apiParams = new groovy.json.JsonSlurperClassic().parseText(jsonParameters)
 
     // Make the HTTP DELETE request using httpRequest
     def response = httpRequest(
