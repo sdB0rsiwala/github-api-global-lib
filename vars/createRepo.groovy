@@ -2,7 +2,7 @@ import groovy.json.JsonSlurper
 
 def withCurl(String jsonParameters) {
 
-    sh '''
+    sh """
         def apiParams = new groovy.json.JsonSlurper().parseText(jsonParameters)
 
         def payload = """{
@@ -18,5 +18,5 @@ def withCurl(String jsonParameters) {
              https://api.github.com/user/repos \\
              -d '${payload}'
 
-    '''
+    """
 }
