@@ -25,3 +25,30 @@ def withCurl(String jsonParameters) {
 
     """
 }
+
+def withHTTP(String jsonParameters) {
+    def apiParams = new groovy.json.JsonSlurperClassic().parseText(jsonParameters)
+
+    def payload = """{
+        "name": "${apiParams.name}",
+        "description": "${apiParams.des}",
+        "private": ${apiParams.private}
+    }"""
+
+    // Escape single quotes in payload for the shell
+    // def escapedPayload = payload.replaceAll("'", "\\'")
+
+    def response = httpRequest(
+        acceptType: 'APPLICATION_JSON',
+        contentType: 'APPLICATION_JSON',
+        httpMode: 'POST',
+        url: 'https://api.github.com/user/repos',
+        requestBody: payload,
+        customHeaders: [
+            [name: 'Authorization', value: "Bearer ${apiParams.token}"],
+            [name: 'X-GitHub-Api-Version', value: '2022-11-28']
+        ]
+    )
+
+    echo "Response: ${response}"
+}
