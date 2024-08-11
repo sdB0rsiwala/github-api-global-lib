@@ -1,3 +1,5 @@
 def call() {
-    curl "http://google.com"
+    sh '''
+        echo "Hello World!"
+    '''
 }
