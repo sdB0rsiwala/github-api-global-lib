@@ -1,3 +1,3 @@
 def call() {
-    curl "http://google.com"
+    usr/bin/curl "http://google.com"
 }
