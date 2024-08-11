@@ -1,6 +1,6 @@
 import groovy.json.JsonSlurper
 
-def withCurl(string jsonParameters) {
+def withCurl(String jsonParameters) {
 
     def jsonSlurper = new JsonSlurper()
     def apiParams = jsonSlurper.parseText(jsonParameters)
