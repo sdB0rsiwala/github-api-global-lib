@@ -15,6 +15,7 @@ def withCurl(String jsonParameters) {
     def escapedPayload = payload.replaceAll("'", "\\'")
 
     sh """
+        echo escapedPayload
         curl -L \\
              -X POST \\
              -H "Accept: application/vnd.github+json" \\
