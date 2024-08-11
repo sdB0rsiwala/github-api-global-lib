@@ -1,9 +1,8 @@
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassic
 
 def withCurl(String jsonParameters) {
 
-    def jsonSlurper = new JsonSlurper()
-    def apiParams = jsonSlurper.parseText(jsonParameters)
+    def apiParams = new groovy.json.JsonSlurperClassic().parseText(jsonParameters)
 
     def payload = """{
         "name": "${apiParams.name}",
@@ -12,7 +11,7 @@ def withCurl(String jsonParameters) {
     }"""
 
     // Escape single quotes in payload for the shell
-    def escapedPayload = payload.replaceAll("'", "\\'")
+    // def escapedPayload = payload.replaceAll("'", "\\'")
 
     sh """
         echo escapedPayload
@@ -22,7 +21,7 @@ def withCurl(String jsonParameters) {
              -H "Authorization: Bearer %apiParams.token%" \\
              -H "X-GitHub-Api-Version: 2022-11-28" \\
              https://api.github.com/user/repos \\
-             -d '${escapedPayload}'
+             -d '${payload}'
 
     """
 }
